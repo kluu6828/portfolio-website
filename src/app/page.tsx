@@ -1,69 +1,125 @@
 import Image from "next/image";
+import { ProjectsSection } from "@/components/ProjectsSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <header className="site-header">
+        <div className="wrapper">
+          <nav className="site-nav">
+            <a className="page-link" href="#top">
+              Main
+            </a>
+            <a className="page-link" href="#projects">
+              Projects
+            </a>
+            <a className="page-link" href="#contact">
+              Contact
+            </a>
+          </nav>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <div className="page-content">
+        <div className="wrapper">
+          <article className="post">
+            <div className="post-content">
+              <div id="top">
+                <center>
+                  <table className="identity-table">
+                    <tbody>
+                      <tr>
+                        <td className="identity-photo">
+                          <Image
+                            src="/headshot.png"
+                            alt="Kelvin Lau (Luu)"
+                            width={200}
+                            height={200}
+                            className="img-rounded"
+                            priority
+                            style={{ width: 200, height: "auto" }}
+                          />
+                        </td>
+                        <td className="identity-copy">
+                          <center>
+                            <h1>Kelvin Lau (Luu)</h1>
+                            <b>Systems &amp; Revenue.</b> <b>Waterloo CS.</b>
+                            <br />
+                            <span className="identity-meta">
+                              <a href="mailto:kluu6828@gmail.com">
+                                kluu6828@gmail.com
+                              </a>{" "}
+                              <a
+                                href="https://linkedin.com/in/lkelvinl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                [linkedin]
+                              </a>
+                            </span>
+                          </center>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </center>
+                <br />
+              </div>
+
+              <p>
+                Bridging software architecture and enterprise revenue. Waterloo
+                CS graduate with enterprise engineering roots (Amex, SMART
+                Technologies) and commercial GTM execution (Aftersell). Building
+                autonomous systems and scaling technical pipeline.
+              </p>
+
+              <h4 style={{ fontWeight: 700 }}>Bio</h4>
+              <p>
+                I graduated with a Bachelor of Computer Science (Business
+                Option) from the University of Waterloo, backed by enterprise
+                software engineering co-ops at companies like American Express
+                and SMART Technologies.
+              </p>
+              <p>
+                Over time, I shifted from writing code to transactional
+                e-commerce sales at first to driving commercial execution and
+                eventually into high-ticket, consultative deals focused on ROI,
+                cash flow, and capital allocation. This led me to scale a
+                marketing agency for B2B wholesale clients and build automated
+                GTM infrastructure.
+              </p>
+              <p>
+                Today, I combine those two worlds as a technical GTM
+                builder—leveraging AI automation, modern workflows, and
+                engineering depth to excel in hybrid Mid-Market SE and AE roles.
+              </p>
+
+              <ProjectsSection />
+            </div>
+          </article>
         </div>
-      </main>
-    </div>
+      </div>
+
+      <footer id="contact" className="site-footer">
+        <div className="wrapper">
+          <h2 className="footer-heading">kelvin lau</h2>
+          <ul className="contact-list">
+            <li>kelvin lau (luu)</li>
+            <li>
+              <a href="mailto:kluu6828@gmail.com">kluu6828@gmail.com</a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/lkelvinl"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/lkelvinl
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </>
   );
 }

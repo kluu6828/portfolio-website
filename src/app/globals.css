@@ -1,26 +1,464 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Ported from https://rush-nlp.com/css/main.css (Jekyll / minima + Bootstrap 3) */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  font-kerning: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure {
+  margin-bottom: 15px;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+img.workflow-lightbox-image {
+  max-width: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+/* Bootstrap 3 default heading size (loaded on rush-nlp.com) */
+h1 {
+  font-size: 36px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: darkblue;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  margin-left: 30px;
+}
+
+/* Bootstrap 3 img-rounded */
+.img-rounded {
+  border-radius: 6px;
+}
+
+.wrapper {
+  max-width: calc(900px - (30px * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    max-width: calc(900px - 30px);
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.wrapper::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.site-header {
+  border-top: 5px solid #424242;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 56px;
+  position: relative;
+}
+
+.site-nav {
+  float: right;
+  line-height: 56px;
+}
+
+.site-nav .page-link {
+  color: #111;
+  line-height: 1.5;
+}
+
+.site-nav .page-link:not(:last-child) {
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .site-nav {
+    float: none;
+    line-height: 1.5;
+    padding: 12px 0;
+  }
+
+  .site-nav .page-link {
+    display: inline-block;
+    margin-right: 16px;
+  }
+
+  .site-nav .page-link:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.page-content {
+  padding: 30px 0;
+}
+
+.post-content {
+  margin-bottom: 30px;
+}
+
+.post-content h4 {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .post-content h4 {
+    font-size: 18px;
+  }
+}
+
+.post-content p {
+  font-size: 18px;
+}
+
+.identity-table {
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.identity-table td {
+  vertical-align: middle;
+}
+
+.identity-photo {
+  padding: 10px 90px 10px 0;
+}
+
+.identity-copy {
+  padding: 10px;
+  text-align: center;
+}
+
+.identity-copy h1 {
+  margin-bottom: 15px;
+}
+
+.identity-meta {
+  font-size: 15px;
+}
+
+.projects-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 18px;
+}
+
+.projects-table td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+.project-index {
+  width: 56px;
+  padding-left: 0 !important;
+}
+
+.project-num {
+  color: #828282;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper {
+  color: darkblue;
+  font-weight: bold;
+}
+
+.stack {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.stack-badge {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  padding: 1px 7px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111;
+  background-color: #eef;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+
+.workflow-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 4px 0 8px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  background: #f6f6f6;
+  cursor: zoom-in;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.workflow-thumb:hover {
+  border-color: #424242;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.workflow-thumb-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.workflow-thumb:hover .workflow-thumb-image {
+  transform: scale(1.02);
+  filter: brightness(0.92);
+}
+
+.workflow-thumb-badge {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #f5f5f5;
+  background: rgba(17, 17, 17, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.workflow-thumb:hover .workflow-thumb-badge,
+.data-preview-thumb:hover .workflow-thumb-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.workflow-thumb-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.data-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 720px;
+  margin: 4px 0 10px;
+}
+
+.data-preview-thumb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  background: #f6f6f6;
+  cursor: zoom-in;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.data-preview-thumb:hover {
+  border-color: #2f6fed;
+  box-shadow:
+    0 0 0 1px rgba(47, 111, 237, 0.35),
+    0 0 18px rgba(47, 111, 237, 0.22),
+    0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.data-preview-image {
+  display: block;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.data-preview-thumb:hover .data-preview-image {
+  transform: scale(1.03);
+  filter: brightness(0.9);
+}
+
+.data-preview-caption {
+  display: block;
+  padding: 8px 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #444;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.data-preview-thumb .workflow-thumb-badge {
+  right: 8px;
+  bottom: 42px;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+@media screen and (max-width: 700px) {
+  .data-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .data-preview-image {
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .project-index {
+    display: none;
+  }
+
+  .projects-table,
+  .projects-table tbody,
+  .projects-table tr,
+  .projects-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .project-body {
+    padding-left: 0 !important;
+  }
+}
+
+.site-footer {
+  border-top: 1px solid #e8e8e8;
+  padding: 30px 0;
+}
+
+.footer-heading {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.contact-list {
+  list-style: none;
+  margin-left: 0;
+  font-size: 15px;
+  color: #828282;
+}
+
+.contact-list li {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .identity-table,
+  .identity-table tbody,
+  .identity-table tr,
+  .identity-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .identity-photo {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .identity-photo img {
+    margin: 0 auto;
+  }
+
+  .identity-copy {
+    padding: 10px 0;
+  }
 }
