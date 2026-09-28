@@ -77,21 +77,23 @@ export default function Home() {
               <p>
                 I graduated with a Bachelor of Computer Science (Business
                 Option) from the University of Waterloo, backed by enterprise
-                software engineering co-ops at companies like American Express
-                and SMART Technologies.
+                software engineering co-ops at American Express and SMART
+                Technologies.
               </p>
               <p>
-                Over time, I shifted from writing code to transactional
-                e-commerce sales at first to driving commercial execution and
-                eventually into high-ticket, consultative deals focused on ROI,
-                cash flow, and capital allocation. This led me to scale a
-                marketing agency for B2B wholesale clients and build automated
+                I then moved into commercial execution, from transactional
+                e-commerce into high-ticket, consultative deals focused on ROI,
+                cash flow, and capital allocation. Along the way I scaled a
+                marketing agency for B2B wholesale clients and built automated
                 GTM infrastructure.
               </p>
               <p>
-                Today, I combine those two worlds as a technical GTM
-                builder—leveraging AI automation, modern workflows, and
-                engineering depth to excel in hybrid Mid-Market SE and AE roles.
+                Today that crossover is the product: I write code to build
+                revenue systems a traditional seller can&apos;t ship, and I close
+                deals with commercial judgment a traditional engineer rarely
+                develops. That combination is what I bring to hybrid Mid-Market
+                SE and AE roles: AI automation, modern workflows, and pipeline
+                that actually converts.
               </p>
 
               <ProjectsSection />

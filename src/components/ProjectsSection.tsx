@@ -133,8 +133,24 @@ const projects: Project[] = [
     title: "AI-Agent Pipeline & Revenue Recovery Engine",
     status: "In Progress",
     story:
-      "Designed for Series A–D SaaS and capital equipment manufacturers. Deploys RSS read-pulls for funding signals, runs AI agents to detect current operational bottlenecks, and generates hyper-personalized outreach. Focuses on selling low-overhead 1099/contract execution to capture unattended pipeline they are losing daily.",
-    architecture: [],
+      "Built for Series A-D SaaS and capital equipment manufacturers that leak pipeline daily: inbound signals go cold, SDRs burn hours on manual research, and high-intent accounts sit unattended.\n\nTarget outcomes: recover unworked opportunities before competitors touch them, and cut manual SDR overhead by automating signal → research → personalized outreach.",
+    architecture: [
+      {
+        label: "Signal Intake",
+        detail:
+          "RSS / funding read-pulls surface net-new buying events (raises, hiring spikes, product launches) as soon as they hit the wire.",
+      },
+      {
+        label: "Bottleneck Agents",
+        detail:
+          "AI agents score accounts, infer operational bottlenecks, and rank who is most likely to buy, so reps only touch Tier-1 recovery work.",
+      },
+      {
+        label: "Revenue Recovery Push",
+        detail:
+          "Hyper-personalized outreach sequences land in Clay/n8n with low-overhead 1099/contract execution attached, capturing pipeline that would otherwise expire unworked.",
+      },
+    ],
     stack: ["n8n", "AI Agents", "RSS Feeds", "Clay"],
   },
 ];
@@ -421,7 +437,17 @@ export function ProjectsSection() {
                 {project.status ? ` · ${project.status}` : ""}.
                 <br />
                 <br />
-                {project.story}
+                {project.story.split("\n\n").map((paragraph, i) => (
+                  <span key={i}>
+                    {i > 0 && (
+                      <>
+                        <br />
+                        <br />
+                      </>
+                    )}
+                    {paragraph}
+                  </span>
+                ))}
                 {project.architecture.length > 0 && (
                   <>
                     <br />
