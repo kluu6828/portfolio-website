@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelvin Luu — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* Print-first resume: Letter, ~0.75" margins, Garamond */
+    @page {
+      size: letter;
+      margin: 0.65in;
+    }
+
+    :root {
+      --ink: #000;
+      --rule: #000;
+      --page-width: 8.5in;
+      --font: Garamond, "EB Garamond", "Palatino Linotype", Palatino, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: #e8e8e8;
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 11pt;
+      line-height: 1.22;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: var(--page-width);
+      min-height: 11in;
+      margin: 24px auto;
+      padding: 0.65in;
+      background: #fff;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    /* —— Header —— */
+    header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-family: var(--font);
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      margin-top: 4px;
+      font-size: 11pt;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .headline:empty {
+      display: none;
+    }
+
+    .contact {
+      margin-top: 3px;
+      font-size: 11pt;
+      font-weight: 400;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* —— Sections —— */
+    section {
+      margin-top: 9px;
+    }
+
+    .section-title {
+      font-family: var(--font);
+      font-size: 11.5pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    /* —— Entries —— */
+    .entry {
+      margin-bottom: 7px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .entry-left {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-weight: 400;
+    }
+
+    .entry-left .role {
+      font-weight: 700;
+    }
+
+    .entry-dates {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      font-weight: 400;
+      text-align: right;
+    }
+
+    .entry-summary {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+
+    .bullets {
+      margin: 0;
+      padding-left: 1.1em;
+      list-style-type: disc;
+    }
+
+    .bullets li {
+      margin: 0.5px 0;
+      padding-left: 0.1em;
+    }
+
+    .bullets li::marker {
+      font-size: 0.8em;
+    }
+
+    .subhead {
+      margin: 2px 0 1px;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+
+    .company-tag {
+      font-weight: 700;
+    }
+
+    .skills .bullets {
+      margin-top: 1px;
+    }
+
+    .skills .label {
+      font-weight: 700;
+    }
+
+    /* —— Screen helpers —— */
+    .hint {
+      max-width: 8.5in;
+      margin: 0 auto 8px;
+      padding: 0 0.75in;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* —— Print —— */
+    @media print {
+      html, body {
+        background: #fff;
+      }
+
+      .hint {
+        display: none !important;
+      }
+
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>KELVIN LUU</h1>
+      <p class="headline">Account Executive | Enterprise Tech Sales & Consultative Selling</p>
+      <p class="contact">
+        <a href="https://www.linkedin.com/in/lkelvinl">Linkedin.com/in/lkelvinl</a>
+        &nbsp;|&nbsp;
+        <a href="tel:+16475246828">647-524-6828</a>
+        &nbsp;|&nbsp;
+        <a href="mailto:kluu6828@gmail.com">kluu6828@gmail.com</a>
+      </p>
+    </header>
+
+    <section>
+      <h2 class="section-title">Professional Experience</h2>
+
+      <!-- RLT / Broker (newest) -->
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">Independent Brokerage – Broker, RLT Vertical</span> | Toronto, CA (remote)
+          </p>
+          <p class="entry-dates">Jan 2026 – Present</p>
+        </div>
+        <p class="entry-summary">Brokered refurbished tanning beds/booths; transitioning into RLT with EXCELL Red Light (Boston, MA).</p>
+        <ul class="bullets">
+          <li>Closed ~$40k TCV early on selling EXCELL Red Light to independent fitness clubs, owning discovery through close</li>
+          <li>Sourced and qualified 15–30 opportunities monthly via outbound prospecting, warm intros, and discovery calls</li>
+          <li>Ran a high-volume outbound engine of ~100 cold calls daily to book discovery sessions and product webinars</li>
+          <li>Built Cursor + Clay automation engines to enrich leads, personalize outreach, and accelerate follow-up</li>
+        </ul>
+      </article>
+
+      <!-- Aftersell -->
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">Aftersell by Rokt – GTM Associate (Inbound Sales)</span> | Toronto, CA (hybrid)
+          </p>
+          <p class="entry-dates">Jan 2025 – Dec 2025</p>
+        </div>
+        <p class="entry-summary">Worked for B2B e-commerce SaaS platform focused on post-purchase monetization for Shopify merchants.</p>
+        <ul class="bullets">
+          <li>Exceeded quota consistently; 130% in Q3 ’25, 110% in Q2 ’25; driven primarily through inbound opportunities</li>
+          <li>Drove ~5x base salary in influenced pipeline, converting inbound demand into closed deals across SMB and mid-market</li>
+          <li>Maintained sub-20-minute speed to lead on inbound traffic, lifting meeting conversion rates and pipeline quality</li>
+          <li>Owned inbound GTM across 4 SaaS product lines, qualifying and converting leads into SQL meetings for AEs</li>
+          <li>Supported AEs with discovery notes, account context, buyer intent signals, and tight handoff quality</li>
+        </ul>
+      </article>
+
+      <!-- Garage Direct Online -->
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">Garage Direct Online – President, SMB Account Executive</span> | Sheridan, WY (remote)
+          </p>
+          <p class="entry-dates">Oct 2023 – Sep 2024</p>
+        </div>
+        <p class="entry-summary">Distributed freight-heavy, bulk products to transform residential & commercial garage spaces in North America.</p>
+        <ul class="bullets">
+          <li>Scaled from zero to $50k in MRR within 6 months, owning the full B2B/B2C sales cycle end-to-end</li>
+          <li>Generated over $1MM hybrid sales opportunities through SEO strategies, driving high-quality pipeline</li>
+          <li>Built 15+ strategic partnerships with C-level stakeholders, driving retention, upsell, and brand credibility</li>
+        </ul>
+      </article>
+
+      <!-- Loocrum -->
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">Loocrum – Founder, Principal Sales Consultant</span> | Toronto, CA (remote)
+          </p>
+          <p class="entry-dates">Jan 2020 – Sep 2023</p>
+        </div>
+        <p class="entry-summary">Ran a marketing agency for DTC brands on paid ads and email strategy while part-time in school.</p>
+        <ul class="bullets">
+          <li>Drove over $4.7MM top-line revenue for clients through consultative selling and solution-oriented strategies</li>
+          <li>Secured 15+ high-value e-commerce clients via targeted outbound prospecting and relationship-driven sales</li>
+          <li>Increased client recurring revenue 30–55% by implementing automated lead nurturing and retention systems</li>
+        </ul>
+      </article>
+
+      <!-- Internships -->
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">Various Companies – Software Engineer Intern</span> | Across Canada (onsite; hybrid; remote)
+          </p>
+          <p class="entry-dates">Jan 2017 – Apr 2020</p>
+        </div>
+        <p class="entry-summary">Co-op engineering rotations enabling independent technical discovery on sales calls without relying on an SE every time.</p>
+        <p class="subhead">Technical Background — highlights:</p>
+        <ul class="bullets">
+          <li><span class="company-tag">Capco</span>: Engineered APIs and full-stack enterprise features for financial workflows and payments systems</li>
+          <li><span class="company-tag">Rangle.io</span>: Optimized e-commerce checkout architectures and membership flows for retail platforms</li>
+          <li><span class="company-tag">Enlighted</span>: Developed IoT Bluetooth libraries and low-latency sensor protocols for connected devices</li>
+          <li><span class="company-tag">American Express</span>: Built CRUD web services for insurance products deployed across 12 global markets</li>
+          <li><span class="company-tag">SMART Technologies</span>: Scaled interactive cloud platform features for an e-learning release reaching 3M+ users</li>
+          <li><span class="company-tag">5Crowd</span>: Enhanced frontend performance and ad targeting, improving load times and lifting CTR by 0.5x</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2 class="section-title">Education</h2>
+      <article class="entry">
+        <div class="entry-header">
+          <p class="entry-left">
+            <span class="role">University of Waterloo – Bachelor of Computer Science with Business Option</span> | Waterloo, CA
+          </p>
+          <p class="entry-dates">Graduated Oct 2023</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-title">Additional</h2>
+      <ul class="bullets">
+        <li><span class="label">GTM:</span> Quota Attainment, Pipeline Generation, Outbound, Closing, Speed-to-Lead</li>
+        <li><span class="label">Revenue Tools:</span> HubSpot CRM, Clay Automations, Cursor Agents, Outbound Engines, Meta</li>
+        <li><span class="label">Technical:</span> Technical Discovery, API Literacy, Python, JavaScript, Full-Stack</li>
+        <li><span class="label">Interests:</span> Direct Response Copywriting, Consumer Psychology, Hiking, Badminton, Catan, Poker</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

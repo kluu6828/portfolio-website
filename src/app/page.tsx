@@ -49,13 +49,31 @@ export default function Home() {
                               <a href="mailto:kluu6828@gmail.com">
                                 kluu6828@gmail.com
                               </a>{" "}
+                              [
                               <a
                                 href="https://linkedin.com/in/lkelvinl"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                [linkedin]
+                                linkedin
                               </a>
+                              {" | "}
+                              <a
+                                href="/master_SE_resume.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                SE cv
+                              </a>
+                              {" | "}
+                              <a
+                                href="/master_AE_resume.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                AE cv
+                              </a>
+                              ]
                             </span>
                           </center>
                         </td>
