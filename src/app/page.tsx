@@ -102,8 +102,8 @@ export default function Home() {
                 I then moved into commercial execution, from transactional
                 e-commerce into high-ticket, consultative deals focused on ROI,
                 cash flow, and capital allocation. Along the way I scaled a
-                marketing agency for B2B wholesale clients and built automated
-                GTM infrastructure.
+                marketing agency for DTC brands, learned B2B distribution for
+                wholesale clients, and built automated GTM infrastructure.
               </p>
               <p>
                 Today that crossover is the product: I write code to build
