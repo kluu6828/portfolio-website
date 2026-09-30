@@ -43,6 +43,8 @@ type WorkflowLightbox = {
   badge?: string;
 };
 
+type StackItem = string | { label: string; struck?: boolean };
+
 type Project = {
   name: string;
   title: string;
@@ -51,7 +53,7 @@ type Project = {
   storyLightbox?: WorkflowLightbox;
   architecture: ArchitectureStep[];
   architectureHeading?: string;
-  stack: string[];
+  stack: StackItem[];
   status?: string;
   githubUrl?: string;
   githubLabel?: string;
@@ -155,6 +157,9 @@ const projects: Project[] = [
       "PikaPods",
       "Instantly",
       "Prospeo",
+      "Telegram",
+      { label: "Google Drive", struck: true },
+      { label: "PDFShift", struck: true },
     ],
     githubUrl: "https://github.com/kluu6828/global-job-outreach-engine",
     githubLabel: "View n8n Workflow JSON & Architecture on GitHub",
@@ -604,11 +609,23 @@ export function ProjectsSection() {
                 )}
                 <br />
                 <span className="stack">
-                  {project.stack.map((tool) => (
-                    <span key={tool} className="stack-badge">
-                      {tool}
-                    </span>
-                  ))}
+                  {project.stack.map((tool) => {
+                    const label = typeof tool === "string" ? tool : tool.label;
+                    const struck =
+                      typeof tool === "object" && Boolean(tool.struck);
+                    return (
+                      <span
+                        key={label}
+                        className={
+                          struck
+                            ? "stack-badge stack-badge-struck"
+                            : "stack-badge"
+                        }
+                      >
+                        {label}
+                      </span>
+                    );
+                  })}
                 </span>
                 {project.githubUrl && (
                   <>
