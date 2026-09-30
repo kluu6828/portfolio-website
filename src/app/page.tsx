@@ -109,9 +109,10 @@ export default function Home() {
                 Today that crossover is the product: I write code to build
                 revenue systems a traditional seller can&apos;t ship, and I close
                 deals with commercial judgment a traditional engineer rarely
-                develops. That combination is what I bring to hybrid Mid-Market
-                SE and AE roles: AI automation, modern workflows, and pipeline
-                that actually converts.
+                develops. Whether that looks like a Mid-Market SE/AE seat or a
+                1099 engagement helping Series A-D SaaS and capital equipment
+                teams recover pipeline, the same stack applies: AI automation,
+                modern workflows, and pipeline that converts.
               </p>
 
               <ProjectsSection />
