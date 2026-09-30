@@ -63,7 +63,7 @@ export default function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                cv (gtm)
+                                gtm cv
                               </a>
                               {" | "}
                               <a
@@ -71,7 +71,7 @@ export default function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                cv (se)
+                                se cv
                               </a>
                               {" | "}
                               <a
@@ -79,7 +79,7 @@ export default function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                cv (ae)
+                                ae cv
                               </a>
                               ]
                             </span>
