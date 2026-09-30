@@ -480,11 +480,11 @@ export function ProjectsSection() {
       onClick={() => openLightbox(lb)}
       aria-label={lb.badge ?? "Click to inspect"}
     >
-      <Image
+      {/* Native img so replaced public/ assets show without Next image cache */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={lb.thumbnail}
         alt={lb.title}
-        width={1241}
-        height={230}
         className="workflow-thumb-image"
       />
       <span className="workflow-thumb-badge">
