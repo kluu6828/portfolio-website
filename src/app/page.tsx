@@ -10,8 +10,8 @@ export default function Home() {
             <a className="page-link" href="#top">
               Main
             </a>
-            <a className="page-link" href="#projects">
-              Projects
+            <a className="page-link" href="#case-studies">
+              Case Studies
             </a>
             <a className="page-link" href="#contact">
               Contact

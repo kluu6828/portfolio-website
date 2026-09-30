@@ -13,6 +13,13 @@ import {
 type ArchitectureStep = {
   label: string;
   detail: string;
+  lightbox?: {
+    thumbnail: string;
+    full: string;
+    title: string;
+    helper: string;
+    badge?: string;
+  };
 };
 
 type LightboxPayload = {
@@ -28,22 +35,27 @@ type DataPreview = {
   helper: string;
 };
 
+type WorkflowLightbox = {
+  thumbnail: string;
+  full: string;
+  title: string;
+  helper: string;
+  badge?: string;
+};
+
 type Project = {
   name: string;
   title: string;
   story: string;
+  storyHeading?: string;
+  storyLightbox?: WorkflowLightbox;
   architecture: ArchitectureStep[];
+  architectureHeading?: string;
   stack: string[];
   status?: string;
   githubUrl?: string;
   githubLabel?: string;
   dataPreviews?: DataPreview[];
-  workflowLightbox?: {
-    thumbnail: string;
-    full: string;
-    title: string;
-    helper: string;
-  };
 };
 
 const projects: Project[] = [
@@ -88,44 +100,70 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "The Semi-Autonomous Job Search & Outreach Engine (Human in the Loop)",
-    title:
-      "Global Multi-Region Job Application & Persona-Tailored Outreach System",
+    name: "An enterprise-grade outbound system built on n8n, Apify, and Airtable to automate lead discovery, fit-scoring, and multi-persona outreach across global markets",
+    title: "Autonomous Multi-Region GTM Engine & Conversion Optimization",
+    storyHeading: "The Objective & Problem",
     story:
-      "Built to solve application fatigue. A deterministic n8n state flow engine running daily at 8:00 AM EST across APAC (HK/SGP), Canada (Toronto), and the USA (TX/FL/NYC).",
+      "Solving distribution friction for enterprise sales operations. Standard outreach pipelines suffer from low conversion velocity, high token costs from unnecessary LLM generation, and application fatigue.",
+    architectureHeading: "Architectural Evolution (V1 vs. V2)",
     architecture: [
       {
-        label: "Scraping & Matching",
+        label: "The V1 Bottleneck",
         detail:
-          "Apify scrapes LinkedIn job listings; LLMs evaluate job-fit scores and prioritize Tier 1 targets.",
+          "Built dynamic LLM resume-tailoring per job posting. Live testing across ~340 sends revealed a ROI bottleneck: heavy Google AI token burn, with minimal lift in enterprise conversion rates versus static master resumes.",
+        lightbox: {
+          thumbnail: "/projects/instantly-v1-test.png",
+          full: "/projects/instantly-v1-test.png",
+          title: "Instantly V1 Live Test (~340 Sends)",
+          helper: "Scroll or drag to inspect the V1 Instantly send results",
+          badge: "Click to inspect V1 Instantly results",
+        },
       },
       {
-        label: "Dynamic Tailoring",
+        label: "The V2 Optimization",
         detail:
-          "Automatically tailors resumes and crafts multi-persona DMs (hiring managers, ICs, recruiters) with custom hooks and CTAs.",
+          "Demoted the LLM from content generation to high-precision classification (Job Fit Scoring). Automated routing of deterministic Master Resumes based on target persona (SE vs. AE).",
+        lightbox: {
+          thumbnail: "/projects/n8n-v2.png",
+          full: "/projects/n8n-v2.png",
+          title: "n8n V2 State Flow Architecture",
+          helper: "Scroll or drag to inspect the V2 workflow nodes",
+          badge: "Click to inspect V2 architecture",
+        },
       },
       {
-        label: "Resilience & Scale",
+        label: "Human-in-the-Loop Orchestration",
         detail:
-          "Hosted on PikaPods (firewall-friendly for travel to China), utilizing batch timers and rate-limit handling across Gemini, PDFShift, Prospeo, Apollo, and Instantly.",
+          "Generated automated, dynamic LinkedIn outreach scripts for Hiring Managers and Peer ICs directly in the database, reserving manual high-touch execution strictly for Tier 1 targets.",
+      },
+      {
+        label: "Deterministic Execution",
+        detail:
+          "Runs daily at 8:00 AM EST across APAC (HK/SGP), Canada, and USA markets.",
+      },
+      {
+        label: "Resilience & Infrastructure",
+        detail:
+          "Self-hosted on PikaPods with batch timer throttling, rate-limit handling, and error-handling fallbacks.",
       },
     ],
     stack: [
       "n8n",
       "Apify",
-      "LLMs",
+      "Google AI Studio (Gemini)",
       "Airtable",
       "PikaPods",
-      "Google AI Studio",
-      "Telegram",
+      "Instantly",
+      "Prospeo",
     ],
     githubUrl: "https://github.com/kluu6828/global-job-outreach-engine",
     githubLabel: "View n8n Workflow JSON & Architecture on GitHub",
-    workflowLightbox: {
+    storyLightbox: {
       thumbnail: "/projects/n8n-thumbnail.png",
       full: "/projects/n8n-full.png",
       title: "n8n State Flow Architecture",
       helper: "Scroll or drag to inspect workflow nodes",
+      badge: "Click to inspect architecture",
     },
   },
   {
@@ -415,10 +453,48 @@ export function ProjectsSection() {
   const [lightbox, setLightbox] = useState<LightboxPayload | null>(null);
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
+  const openLightbox = (payload: {
+    full: string;
+    title: string;
+    helper: string;
+  }) =>
+    setLightbox({
+      src: payload.full,
+      title: payload.title,
+      helper: payload.helper,
+    });
+
+  const renderWorkflowThumb = (
+    lb: WorkflowLightbox,
+    key: string,
+  ) => (
+    <button
+      key={key}
+      type="button"
+      className="workflow-thumb"
+      onClick={() => openLightbox(lb)}
+      aria-label={lb.badge ?? "Click to inspect"}
+    >
+      <Image
+        src={lb.thumbnail}
+        alt={lb.title}
+        width={1241}
+        height={230}
+        className="workflow-thumb-image"
+      />
+      <span className="workflow-thumb-badge">
+        <span className="workflow-thumb-icon" aria-hidden>
+          ↗
+        </span>
+        {lb.badge ?? "Click to inspect architecture"}
+      </span>
+    </button>
+  );
+
   return (
     <>
-      <h4 id="projects" style={{ fontWeight: 700 }}>
-        Projects
+      <h4 id="case-studies" style={{ fontWeight: 700 }}>
+        Case Studies
       </h4>
 
       <table className="projects-table">
@@ -437,6 +513,13 @@ export function ProjectsSection() {
                 {project.status ? ` · ${project.status}` : ""}.
                 <br />
                 <br />
+                {project.storyHeading && (
+                  <>
+                    <b>{project.storyHeading}</b>
+                    <br />
+                    <br />
+                  </>
+                )}
                 {project.story.split("\n\n").map((paragraph, i) => (
                   <span key={i}>
                     {i > 0 && (
@@ -448,17 +531,34 @@ export function ProjectsSection() {
                     {paragraph}
                   </span>
                 ))}
+                {project.storyLightbox && (
+                  <>
+                    <br />
+                    <br />
+                    {renderWorkflowThumb(project.storyLightbox, "story-lb")}
+                  </>
+                )}
                 {project.architecture.length > 0 && (
                   <>
                     <br />
                     <br />
-                    <b>How it works</b>
+                    <b>{project.architectureHeading ?? "How it works"}</b>
                     <br />
                     {project.architecture.map((step) => (
-                      <span key={step.label}>
+                      <div key={step.label}>
                         <b>{step.label}:</b> {step.detail}
                         <br />
-                      </span>
+                        {step.lightbox && (
+                          <>
+                            <br />
+                            {renderWorkflowThumb(
+                              step.lightbox,
+                              `${step.label}-lb`,
+                            )}
+                            <br />
+                          </>
+                        )}
+                      </div>
                     ))}
                   </>
                 )}
@@ -500,38 +600,6 @@ export function ProjectsSection() {
                         </button>
                       ))}
                     </div>
-                  </>
-                )}
-                {project.workflowLightbox && (
-                  <>
-                    <br />
-                    <br />
-                    <button
-                      type="button"
-                      className="workflow-thumb"
-                      onClick={() =>
-                        setLightbox({
-                          src: project.workflowLightbox!.full,
-                          title: project.workflowLightbox!.title,
-                          helper: project.workflowLightbox!.helper,
-                        })
-                      }
-                      aria-label="Click to inspect architecture"
-                    >
-                      <Image
-                        src={project.workflowLightbox.thumbnail}
-                        alt="n8n workflow architecture thumbnail"
-                        width={1241}
-                        height={230}
-                        className="workflow-thumb-image"
-                      />
-                      <span className="workflow-thumb-badge">
-                        <span className="workflow-thumb-icon" aria-hidden>
-                          ↗
-                        </span>
-                        Click to inspect architecture
-                      </span>
-                    </button>
                   </>
                 )}
                 <br />
