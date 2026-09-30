@@ -59,11 +59,19 @@ export default function Home() {
                               </a>
                               {" | "}
                               <a
+                                href="/master_GTM_resume.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                cv (gtm)
+                              </a>
+                              {" | "}
+                              <a
                                 href="/master_SE_resume.html"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                SE cv
+                                cv (se)
                               </a>
                               {" | "}
                               <a
@@ -71,7 +79,7 @@ export default function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                AE cv
+                                cv (ae)
                               </a>
                               ]
                             </span>
