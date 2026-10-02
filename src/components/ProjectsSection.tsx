@@ -13,6 +13,8 @@ import {
 type ArchitectureStep = {
   label: string;
   detail: string;
+  sectionHeading?: string;
+  bullets?: { label: string; detail: string }[];
   lightbox?: {
     thumbnail: string;
     full: string;
@@ -137,6 +139,36 @@ const projects: Project[] = [
         label: "Human-in-the-Loop Orchestration",
         detail:
           "Generated automated, dynamic LinkedIn outreach scripts for Hiring Managers and Peer ICs directly in the database, reserving manual high-touch execution strictly for Tier 1 targets.",
+      },
+      {
+        sectionHeading:
+          "Architectural Exploration (V3 Vision vs. Pragmatic Scope)",
+        label: "The V3 Exploration",
+        detail:
+          "Explored expanding the pipeline into a fully autonomous ATS auto-apply agent using Playwright/Browserless to parse Ashby, Lever, and Greenhouse forms and execute dynamic LLM screening answers.",
+      },
+      {
+        label:
+          "The Pragmatic Tradeoff (Why V3 Was Scoped to Human-in-the-Loop)",
+        detail:
+          "During technical validation, automated session-handling revealed a critical security risk:",
+        bullets: [
+          {
+            label: "Primary Account Safety",
+            detail:
+              "Automating authenticated LinkedIn navigation to resolve gated offsite ATS links triggers anti-bot telemetry, risking permanent account restrictions.",
+          },
+          {
+            label: "Diminishing ROI",
+            detail:
+              "Gated apply links and Easy Apply modals create edge-case fragility, requiring heavy scraper maintenance for marginal time savings.",
+          },
+        ],
+      },
+      {
+        label: "Decision",
+        detail:
+          "Intentionally bound automation to Data Ingestion, Persona Deduction, and Message Staging. Preserved a 10-second manual execution step for form submission and outreach, delivering 90% of full-automation velocity with 100% account security and zero system downtime.",
       },
       {
         label: "Deterministic Execution",
@@ -550,18 +582,38 @@ export function ProjectsSection() {
                     <b>{project.architectureHeading ?? "How it works"}</b>
                     <br />
                     {project.architecture.map((step) => (
-                      <div key={step.label}>
-                        <b>{step.label}:</b> {step.detail}
-                        <br />
+                      <div
+                        key={step.label}
+                        className={
+                          step.sectionHeading
+                            ? "arch-step arch-step-section"
+                            : "arch-step"
+                        }
+                      >
+                        {step.sectionHeading && (
+                          <p className="arch-section-heading">
+                            <b>{step.sectionHeading}</b>
+                          </p>
+                        )}
+                        <p className="arch-step-body">
+                          <b>{step.label}:</b> {step.detail}
+                        </p>
+                        {step.bullets && step.bullets.length > 0 && (
+                          <ul className="arch-bullets">
+                            {step.bullets.map((bullet) => (
+                              <li key={bullet.label}>
+                                <b>{bullet.label}:</b> {bullet.detail}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                         {step.lightbox && (
-                          <>
-                            <br />
+                          <div className="arch-step-media">
                             {renderWorkflowThumb(
                               step.lightbox,
                               `${step.label}-lb`,
                             )}
-                            <br />
-                          </>
+                          </div>
                         )}
                       </div>
                     ))}
