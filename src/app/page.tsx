@@ -118,9 +118,9 @@ export default function Home() {
                 revenue systems a traditional seller can&apos;t ship, and I close
                 deals with commercial judgment a traditional engineer rarely
                 develops. Whether that looks like a Mid-Market SE/AE seat or a
-                1099 engagement helping Series A-D SaaS and capital equipment
-                teams recover pipeline, the same stack applies: AI automation,
-                modern workflows, and pipeline that converts.
+                1099 engagement helping Series A-D SaaS teams, the same stack
+                applies: AI automation, modern workflows, and pipeline that
+                converts.
               </p>
 
               <ProjectsSection />
