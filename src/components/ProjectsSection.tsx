@@ -208,7 +208,7 @@ const projects: Project[] = [
     title: "AI-Agent Pipeline & Revenue Recovery Engine",
     status: "In Progress",
     story:
-      "Built for Series A-D SaaS and capital equipment manufacturers that leak pipeline daily: inbound signals go cold, SDRs burn hours on manual research, and high-intent accounts sit unattended.\n\nTarget outcomes: recover unworked opportunities before competitors touch them, and cut manual SDR overhead by automating signal → research → personalized outreach.",
+      "Built for Series A-D SaaS companies that leak pipeline daily: inbound signals go cold, SDRs burn hours on manual research, and high-intent accounts sit unattended.\n\nTarget outcomes: recover unworked opportunities before competitors touch them, and cut manual SDR overhead by automating signal → research → personalized outreach.",
     architecture: [
       {
         label: "Signal Intake",
