@@ -117,10 +117,9 @@ export default function Home() {
                 Today that crossover is the product: I write code to build
                 revenue systems a traditional seller can&apos;t ship, and I close
                 deals with commercial judgment a traditional engineer rarely
-                develops. Whether that looks like a Mid-Market SE/AE seat or a
-                1099 engagement helping Series A-D SaaS teams, the same stack
-                applies: AI automation, modern workflows, and pipeline that
-                converts.
+                develops. I build autonomous lead engines that solve
+                distribution friction and drive pipeline velocity for
+                enterprise and high-growth commercial teams.
               </p>
 
               <ProjectsSection />
