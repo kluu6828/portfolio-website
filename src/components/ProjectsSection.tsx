@@ -79,7 +79,7 @@ const projects: Project[] = [
     name: "The Enterprise GTM & Waterfall Enrichment Engine",
     title: "Autonomous B2B Lead Generation & Waterfall Enrichment Pipeline",
     story:
-      "Built for a Red Light Therapy system client in Boston, MA (in partnership with a managing partner and ex-owner of Suncapsule).",
+      "Built for a CapEx system client in Boston, MA (in partnership with a managing partner and ex-owner of Suncapsule).",
     architecture: [
       {
         label: "Ingestion",
