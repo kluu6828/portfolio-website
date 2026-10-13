@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HashScroll } from "@/components/HashScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <HashScroll />
+        {children}
+      </body>
     </html>
   );
 }

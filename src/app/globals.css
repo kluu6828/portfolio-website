@@ -8,6 +8,19 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#case-study-1,
+#case-study-2,
+#case-study-3,
+#case-studies,
+#contact,
+#top {
+  scroll-margin-top: 1.25rem;
+}
+
 body,
 h1,
 h2,

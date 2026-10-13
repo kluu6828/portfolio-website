@@ -119,16 +119,17 @@ const projects: Project[] = [
   },
   {
     name: "An enterprise-grade outbound system built on n8n, Apify, and Airtable to automate lead discovery, fit-scoring, and multi-persona outreach across global markets",
-    title: "Autonomous Multi-Region GTM Engine & Conversion Optimization",
-    storyHeading: "The Objective & Problem",
+    title:
+      "Enterprise Outbound Automation & Multi-Persona Pipeline Architecture",
+    storyHeading: "Cost Optimization & Conversion Acceleration",
     story:
-      "Solving distribution friction for enterprise sales operations. Standard outreach pipelines suffer from low conversion velocity, high token costs from unnecessary LLM generation, and application fatigue.",
-    architectureHeading: "Architectural Evolution (V1 vs. V2)",
+      "Enterprise outbound pipelines stall when generative LLMs sit in the critical path—inflating token cost without moving reply rate.\n\nV1 friction: high LLM token burn with minimal lift in cold response rate (~340 live sends).\n\nV2 fix: LLM demoted strictly to Account Fit Scoring & Lead Routing, driving 90% of pipeline velocity with 0% rate-limit downtime.",
+    architectureHeading: "Architectural Evolution (V1 → V2)",
     architecture: [
       {
-        label: "The V1 Bottleneck",
+        label: "V1 Friction",
         detail:
-          "Built dynamic LLM resume-tailoring per job posting. Live testing across ~340 sends revealed a ROI bottleneck: heavy Google AI token burn, with minimal lift in enterprise conversion rates versus static master resumes.",
+          "LLM-generated messaging sat in the send path. Live testing across ~340 Instantly sends exposed the cost curve: heavy Google AI token burn with minimal lift in cold response rate versus deterministic persona assets.",
         lightbox: {
           thumbnail: "/projects/instantly-v1-test.png",
           full: "/projects/instantly-v1-test.png",
@@ -138,9 +139,9 @@ const projects: Project[] = [
         },
       },
       {
-        label: "The V2 Optimization",
+        label: "V2 Fix",
         detail:
-          "Demoted the LLM from content generation to high-precision classification (Job Fit Scoring). Automated routing of deterministic Master Resumes based on target persona (SE vs. AE).",
+          "Demoted the LLM strictly to Account Fit Scoring & Lead Routing. Deterministic multi-persona assets (SE vs. AE) are selected and dispatched—no generative rewrite in the critical path—preserving reply quality while collapsing token spend and rate-limit risk.",
         lightbox: {
           thumbnail: "/projects/n8n-v2.png",
           full: "/projects/n8n-v2.png",
@@ -152,37 +153,36 @@ const projects: Project[] = [
       {
         label: "Human-in-the-Loop Orchestration",
         detail:
-          "Generated automated, dynamic LinkedIn outreach scripts for Hiring Managers and Peer ICs directly in the database, reserving manual high-touch execution strictly for Tier 1 targets.",
+          "Stages dynamic LinkedIn outreach scripts for economic buyers and peer influencers directly in Airtable, reserving manual high-touch send execution strictly for Tier 1 accounts.",
       },
       {
         sectionHeading:
           "Architectural Exploration (V3 Vision vs. Pragmatic Scope)",
-        label: "The V3 Exploration",
+        label: "V3 Exploration",
         detail:
-          "Explored expanding the pipeline into a fully autonomous ATS auto-apply agent using Playwright/Browserless to parse Ashby, Lever, and Greenhouse forms and execute dynamic LLM screening answers.",
+          "Explored collapsing the remaining manual send step into a fully autonomous multi-channel agent—Playwright/Browserless resolving gated offsite destinations and drafting dynamic LLM responses without human intervention.",
       },
       {
-        label:
-          "The Pragmatic Tradeoff (Why V3 Was Scoped to Human-in-the-Loop)",
+        label: "Pragmatic Tradeoff",
         detail:
-          "During technical validation, automated session-handling revealed a critical security risk:",
+          "Technical validation showed that full send-path automation introduced unacceptable enterprise risk for marginal velocity gains:",
         bullets: [
           {
-            label: "Primary Account Safety",
+            label: "Account Safety",
             detail:
-              "Automating authenticated LinkedIn navigation to resolve gated offsite ATS links triggers anti-bot telemetry, risking permanent account restrictions.",
+              "Authenticated LinkedIn navigation to resolve gated offsite destinations triggers anti-bot telemetry, risking permanent sender-account restrictions.",
           },
           {
             label: "Diminishing ROI",
             detail:
-              "Gated apply links and Easy Apply modals create edge-case fragility, requiring heavy scraper maintenance for marginal time savings.",
+              "Gated redirects and modal edge cases create scraper fragility, requiring heavy maintenance for marginal time savings over a short human-in-the-loop send.",
           },
         ],
       },
       {
         label: "Decision",
         detail:
-          "Intentionally bound automation to Data Ingestion, Persona Deduction, and Message Staging. Preserved a 10-second manual execution step for form submission and outreach, delivering 90% of full-automation velocity with 100% account security and zero system downtime.",
+          "Bound automation to Data Ingestion, Account Fit Scoring, Persona Routing, and Message Staging. Preserved a ~10-second manual send step for Tier 1 outreach—delivering 90% of full-automation velocity with 100% account security and 0% rate-limit downtime.",
       },
       {
         label: "Deterministic Execution",
@@ -555,7 +555,7 @@ export function ProjectsSection() {
       <table className="projects-table">
         <tbody>
           {projects.map((project, index) => (
-            <tr key={project.title}>
+            <tr key={project.title} id={`case-study-${index + 1}`}>
               <td className="project-index">
                 <span className="project-num">
                   {String(index + 1).padStart(2, "0")}

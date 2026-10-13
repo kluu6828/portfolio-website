@@ -39,12 +39,12 @@ export const caseStudy02Architecture = {
     {
       num: "01",
       label: "Discovery",
-      nodes: ["Apify scrape", "APAC / CA / USA", "Job intake"],
+      nodes: ["Apify scrape", "APAC / CA / USA", "Lead intake"],
     },
     {
       num: "02",
       label: "Classification",
-      nodes: ["Gemini fit-score", "SE vs AE persona", "Master resume route"],
+      nodes: ["Account fit-score", "Persona routing", "Lead routing"],
     },
     {
       num: "03",
@@ -54,8 +54,8 @@ export const caseStudy02Architecture = {
   ] satisfies ArchStage[],
   metrics: [
     "Multi-Region Daily 8AM Dispatch",
-    "LLM Demoted to Classification",
-    "90% Velocity · 100% Account Safety",
+    "LLM Demoted to Fit Scoring",
+    "90% Velocity · 0% Rate-Limit Downtime",
   ],
 };
 
