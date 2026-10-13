@@ -74,7 +74,7 @@ export const caseStudy03Architecture = {
     {
       num: "03",
       label: "Recovery",
-      nodes: ["Clay / n8n sequences", "Personalized outreach", "1099 execution"],
+      nodes: ["Clay / n8n sequences", "Personalized outreach", "Autonomous execution"],
     },
   ] satisfies ArchStage[],
   metrics: [

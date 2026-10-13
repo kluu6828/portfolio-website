@@ -239,7 +239,7 @@ const projects: Project[] = [
       {
         label: "Revenue Recovery Push",
         detail:
-          "Hyper-personalized outreach sequences land in Clay/n8n with low-overhead 1099/contract execution attached, capturing pipeline that would otherwise expire unworked.",
+          "Hyper-personalized outreach sequences land in Clay/n8n with low-overhead autonomous execution attached, capturing pipeline that would otherwise expire unworked.",
       },
     ],
     stack: ["n8n", "AI Agents", "RSS Feeds", "Clay"],
