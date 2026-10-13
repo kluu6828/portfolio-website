@@ -91,28 +91,55 @@ export function BusinessArchitectureMetrics({
   return (
     <div className="biz-arch">
       <div className="biz-arch-flow" role="list">
-        {stages.map((stage, index) => (
-          <div key={stage.label} className="biz-arch-flow-item" role="listitem">
-            {index > 0 && (
-              <span className="biz-arch-arrow" aria-hidden="true">
-                →
-              </span>
-            )}
-            <div className="biz-arch-node">
+        {stages.flatMap((stage, index) => {
+          const node = (
+            <div
+              key={stage.label}
+              className="biz-arch-node"
+              role="listitem"
+            >
               <div className="biz-arch-node-head">
                 <span className="biz-arch-node-num">{stage.num}</span>
                 <span className="biz-arch-node-label">{stage.label}</span>
               </div>
               <div className="biz-arch-node-body">
-                {stage.nodes.map((node) => (
-                  <span key={node} className="biz-arch-chip">
-                    {node}
+                {stage.nodes.map((item) => (
+                  <span key={item} className="biz-arch-chip">
+                    {item}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
-        ))}
+          );
+
+          if (index === 0) return [node];
+
+          return [
+            <span
+              key={`arrow-${stage.label}`}
+              className="biz-arch-arrow"
+              aria-hidden="true"
+            >
+              <svg
+                className="biz-arch-arrow-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                focusable="false"
+              >
+                <path
+                  d="M4 12h13M13 6l6 6-6 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>,
+            node,
+          ];
+        })}
       </div>
 
       <ul className="biz-arch-metrics">
