@@ -705,14 +705,28 @@ export function ProjectsSection() {
 
                   const githubLink = project.githubUrl ? (
                     <a
+                      className="project-github"
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      [
-                      {project.githubLabel ??
-                        "View Architecture & Code on Github"}
-                      ]
+                      <svg
+                        className="project-github-pointer"
+                        viewBox="0 0 16 16"
+                        width="12"
+                        height="12"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M3.1 1.2a.6.6 0 0 1 .66-.07l10.2 5.7a.6.6 0 0 1-.08 1.1L9.4 9.4l1.95 4.2a.6.6 0 0 1-1.1.5L8.2 9.7 5.3 12.3a.6.6 0 0 1-.98-.37V1.75c0-.2.1-.39.28-.55Z"
+                        />
+                      </svg>
+                      <span>
+                        {project.githubLabel ??
+                          "View Architecture & Code on Github"}
+                      </span>
                     </a>
                   ) : null;
 
@@ -744,25 +758,26 @@ export function ProjectsSection() {
                       <>
                         <details className="tech-details">
                           <summary className="tech-details-summary">
-                            Expand Technical Implementation & Methodology
+                            <span className="tech-details-label">
+                              Technical Implementation & Methodology
+                            </span>
+                            <span className="tech-details-chevron" aria-hidden>
+                              ▾
+                            </span>
                           </summary>
                           <div className="tech-details-body">
+                            {githubLink && (
+                              <div className="tech-details-github">
+                                {githubLink}
+                              </div>
+                            )}
                             {storyBlock}
                             {architectureBlock}
                             {dataPreviewsBlock}
+                            <div className="tech-details-stack">{stackBlock}</div>
                           </div>
                         </details>
-                        {githubLink && (
-                          <>
-                            <br />
-                            {githubLink}
-                          </>
-                        )}
-                        <br />
-                        <br />
-                        {stackBlock}
-                        <br />
-                        <br />
+                        <div className="project-case-end" />
                       </>
                     );
                   }

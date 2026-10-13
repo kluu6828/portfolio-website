@@ -115,13 +115,13 @@ export function BusinessArchitectureMetrics({
         ))}
       </div>
 
-      <div className="biz-arch-metrics">
+      <ul className="biz-arch-metrics">
         {metrics.map((metric) => (
-          <span key={metric} className="stack-badge">
+          <li key={metric} className="biz-arch-metric">
             {metric}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
