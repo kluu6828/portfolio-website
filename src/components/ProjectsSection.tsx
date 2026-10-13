@@ -16,6 +16,7 @@ import {
   caseStudy03Architecture,
   type ArchStage,
 } from "@/components/BusinessArchitectureMetrics";
+import { TechDetailsDisclosure } from "@/components/TechDetailsDisclosure";
 
 type ArchitectureStep = {
   label: string;
@@ -79,7 +80,7 @@ const projects: Project[] = [
     name: "The Enterprise GTM & Waterfall Enrichment Engine",
     title: "Autonomous B2B Lead Generation & Waterfall Enrichment Pipeline",
     story:
-      "Built for a CapEx system client in Boston, MA (in partnership with a managing partner and ex-owner of Suncapsule).",
+      "Built for a CapEx system client in Boston, MA (in partnership with a managing partner of red light vertical booths).",
     architecture: [
       {
         label: "Ingestion",
@@ -756,27 +757,17 @@ export function ProjectsSection() {
                   if (project.collapseTechnicalDetails) {
                     return (
                       <>
-                        <details className="tech-details">
-                          <summary className="tech-details-summary">
-                            <span className="tech-details-label">
-                              Technical Implementation & Methodology
-                            </span>
-                            <span className="tech-details-chevron" aria-hidden>
-                              ▾
-                            </span>
-                          </summary>
-                          <div className="tech-details-body">
-                            {githubLink && (
-                              <div className="tech-details-github">
-                                {githubLink}
-                              </div>
-                            )}
-                            {storyBlock}
-                            {architectureBlock}
-                            {dataPreviewsBlock}
-                            <div className="tech-details-stack">{stackBlock}</div>
-                          </div>
-                        </details>
+                        <TechDetailsDisclosure>
+                          {githubLink && (
+                            <div className="tech-details-github">
+                              {githubLink}
+                            </div>
+                          )}
+                          {storyBlock}
+                          {architectureBlock}
+                          {dataPreviewsBlock}
+                          <div className="tech-details-stack">{stackBlock}</div>
+                        </TechDetailsDisclosure>
                         <div className="project-case-end" />
                       </>
                     );

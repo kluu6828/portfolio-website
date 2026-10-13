@@ -459,22 +459,20 @@ ol {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  width: 100%;
+  margin: 0;
   padding: 0.7rem 0.9rem;
-  cursor: pointer;
-  list-style: none;
+  border: 0;
+  font: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.35;
+  text-align: left;
   color: #111;
   background: #f9f9f9;
+  cursor: pointer;
   user-select: none;
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.tech-details-summary::-webkit-details-marker {
-  display: none;
+  transition: background-color 0.2s ease;
 }
 
 .tech-details-summary:hover {
@@ -503,22 +501,47 @@ ol {
   background: #fff;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  transition: transform 0.18s ease;
+  transition: transform 0.28s ease;
 }
 
-.tech-details[open] > .tech-details-summary {
+.tech-details.is-open > .tech-details-summary {
   border-bottom: 1px solid #e5e5e5;
   background: #f6f6f6;
 }
 
-.tech-details[open] > .tech-details-summary .tech-details-chevron {
+.tech-details.is-open > .tech-details-summary .tech-details-chevron {
   transform: rotate(180deg);
+}
+
+.tech-details-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+
+.tech-details.is-open > .tech-details-panel {
+  grid-template-rows: 1fr;
+}
+
+.tech-details-panel-inner {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .tech-details-body {
   margin: 0;
   padding: 0.95rem 0.95rem 1.05rem;
   background: #fff;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.28s ease;
+}
+
+.tech-details.is-open .tech-details-body {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tech-details-github {
