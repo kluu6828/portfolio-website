@@ -9,6 +9,13 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import {
+  BusinessArchitectureMetrics,
+  caseStudy01Architecture,
+  caseStudy02Architecture,
+  caseStudy03Architecture,
+  type ArchStage,
+} from "@/components/BusinessArchitectureMetrics";
 
 type ArchitectureStep = {
   label: string;
@@ -60,6 +67,11 @@ type Project = {
   githubUrl?: string;
   githubLabel?: string;
   dataPreviews?: DataPreview[];
+  businessArchitecture?: {
+    stages: ArchStage[];
+    metrics: string[];
+  };
+  collapseTechnicalDetails?: boolean;
 };
 
 const projects: Project[] = [
@@ -87,6 +99,8 @@ const projects: Project[] = [
     stack: ["Cursor", "Outscraper", "Clay", "Instantly", "Python", "Serper"],
     githubUrl: "https://github.com/kluu6828/b2b-lead-gen-waterfall-engine",
     githubLabel: "View Architecture & Code on Github",
+    businessArchitecture: caseStudy01Architecture,
+    collapseTechnicalDetails: true,
     dataPreviews: [
       {
         src: "/projects/market-analysis-mapping.png",
@@ -195,6 +209,8 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/kluu6828/global-job-outreach-engine",
     githubLabel: "View n8n Workflow JSON & Architecture on GitHub",
+    businessArchitecture: caseStudy02Architecture,
+    collapseTechnicalDetails: true,
     storyLightbox: {
       thumbnail: "/projects/n8n-thumbnail.png",
       full: "/projects/n8n-full.png",
@@ -227,6 +243,8 @@ const projects: Project[] = [
       },
     ],
     stack: ["n8n", "AI Agents", "RSS Feeds", "Clay"],
+    businessArchitecture: caseStudy03Architecture,
+    collapseTechnicalDetails: true,
   },
 ];
 
@@ -548,141 +566,144 @@ export function ProjectsSection() {
                 <br />
                 {project.name}
                 {project.status ? ` · ${project.status}` : ""}.
-                <br />
-                <br />
-                {project.storyHeading && (
+                {project.businessArchitecture ? (
+                  <BusinessArchitectureMetrics
+                    stages={project.businessArchitecture.stages}
+                    metrics={project.businessArchitecture.metrics}
+                  />
+                ) : (
                   <>
-                    <b>{project.storyHeading}</b>
                     <br />
                     <br />
                   </>
                 )}
-                {project.story.split("\n\n").map((paragraph, i) => (
-                  <span key={i}>
-                    {i > 0 && (
+                {(() => {
+                  const storyBlock = (
+                    <>
+                      {project.storyHeading && (
+                        <>
+                          <b>{project.storyHeading}</b>
+                          <br />
+                          <br />
+                        </>
+                      )}
+                      {project.story.split("\n\n").map((paragraph, i) => (
+                        <span key={i}>
+                          {i > 0 && (
+                            <>
+                              <br />
+                              <br />
+                            </>
+                          )}
+                          {paragraph}
+                        </span>
+                      ))}
+                      {project.storyLightbox && (
+                        <>
+                          <br />
+                          <br />
+                          {renderWorkflowThumb(
+                            project.storyLightbox,
+                            "story-lb",
+                          )}
+                        </>
+                      )}
+                    </>
+                  );
+
+                  const architectureBlock =
+                    project.architecture.length > 0 ? (
                       <>
                         <br />
                         <br />
-                      </>
-                    )}
-                    {paragraph}
-                  </span>
-                ))}
-                {project.storyLightbox && (
-                  <>
-                    <br />
-                    <br />
-                    {renderWorkflowThumb(project.storyLightbox, "story-lb")}
-                  </>
-                )}
-                {project.architecture.length > 0 && (
-                  <>
-                    <br />
-                    <br />
-                    <b>{project.architectureHeading ?? "How it works"}</b>
-                    <br />
-                    {project.architecture.map((step) => (
-                      <div
-                        key={step.label}
-                        className={
-                          step.sectionHeading
-                            ? "arch-step arch-step-section"
-                            : "arch-step"
-                        }
-                      >
-                        {step.sectionHeading && (
-                          <p className="arch-section-heading">
-                            <b>{step.sectionHeading}</b>
-                          </p>
-                        )}
-                        <p className="arch-step-body">
-                          <b>{step.label}:</b> {step.detail}
-                        </p>
-                        {step.bullets && step.bullets.length > 0 && (
-                          <ul className="arch-bullets">
-                            {step.bullets.map((bullet) => (
-                              <li key={bullet.label}>
-                                <b>{bullet.label}:</b> {bullet.detail}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {step.lightbox && (
-                          <div className="arch-step-media">
-                            {renderWorkflowThumb(
-                              step.lightbox,
-                              `${step.label}-lb`,
+                        <b>{project.architectureHeading ?? "How it works"}</b>
+                        <br />
+                        {project.architecture.map((step) => (
+                          <div
+                            key={step.label}
+                            className={
+                              step.sectionHeading
+                                ? "arch-step arch-step-section"
+                                : "arch-step"
+                            }
+                          >
+                            {step.sectionHeading && (
+                              <p className="arch-section-heading">
+                                <b>{step.sectionHeading}</b>
+                              </p>
+                            )}
+                            <p className="arch-step-body">
+                              <b>{step.label}:</b> {step.detail}
+                            </p>
+                            {step.bullets && step.bullets.length > 0 && (
+                              <ul className="arch-bullets">
+                                {step.bullets.map((bullet) => (
+                                  <li key={bullet.label}>
+                                    <b>{bullet.label}:</b> {bullet.detail}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                            {step.lightbox && (
+                              <div className="arch-step-media">
+                                {renderWorkflowThumb(
+                                  step.lightbox,
+                                  `${step.label}-lb`,
+                                )}
+                              </div>
                             )}
                           </div>
-                        )}
-                      </div>
-                    ))}
-                  </>
-                )}
-                {project.dataPreviews && project.dataPreviews.length > 0 && (
-                  <>
-                    <br />
-                    <br />
-                    <div className="data-preview-grid">
-                      {project.dataPreviews.map((preview) => (
-                        <button
-                          key={preview.src}
-                          type="button"
-                          className="data-preview-thumb"
-                          onClick={() =>
-                            setLightbox({
-                              src: preview.src,
-                              title: preview.title,
-                              helper: preview.helper,
-                            })
-                          }
-                          aria-label={`Click to inspect data output: ${preview.label}`}
-                        >
-                          <Image
-                            src={preview.src}
-                            alt={preview.label}
-                            width={1400}
-                            height={700}
-                            className="data-preview-image"
-                          />
-                          <span className="data-preview-caption">
-                            {preview.label}
-                          </span>
-                          <span className="workflow-thumb-badge">
-                            <span className="workflow-thumb-icon" aria-hidden>
-                              ↗
-                            </span>
-                            Click to inspect data output
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                )}
-                <br />
-                <span className="stack">
-                  {project.stack.map((tool) => {
-                    const label = typeof tool === "string" ? tool : tool.label;
-                    const struck =
-                      typeof tool === "object" && Boolean(tool.struck);
-                    return (
-                      <span
-                        key={label}
-                        className={
-                          struck
-                            ? "stack-badge stack-badge-struck"
-                            : "stack-badge"
-                        }
-                      >
-                        {label}
-                      </span>
-                    );
-                  })}
-                </span>
-                {project.githubUrl && (
-                  <>
-                    <br />
-                    <br />
+                        ))}
+                      </>
+                    ) : null;
+
+                  const dataPreviewsBlock =
+                    project.dataPreviews &&
+                    project.dataPreviews.length > 0 ? (
+                      <>
+                        <br />
+                        <br />
+                        <div className="data-preview-grid">
+                          {project.dataPreviews.map((preview) => (
+                            <button
+                              key={preview.src}
+                              type="button"
+                              className="data-preview-thumb"
+                              onClick={() =>
+                                setLightbox({
+                                  src: preview.src,
+                                  title: preview.title,
+                                  helper: preview.helper,
+                                })
+                              }
+                              aria-label={`Click to inspect data output: ${preview.label}`}
+                            >
+                              <Image
+                                src={preview.src}
+                                alt={preview.label}
+                                width={1400}
+                                height={700}
+                                className="data-preview-image"
+                              />
+                              <span className="data-preview-caption">
+                                {preview.label}
+                              </span>
+                              <span className="workflow-thumb-badge">
+                                <span
+                                  className="workflow-thumb-icon"
+                                  aria-hidden
+                                >
+                                  ↗
+                                </span>
+                                Click to inspect data output
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    ) : null;
+
+                  const githubLink = project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -693,10 +714,78 @@ export function ProjectsSection() {
                         "View Architecture & Code on Github"}
                       ]
                     </a>
-                  </>
-                )}
-                <br />
-                <br />
+                  ) : null;
+
+                  const stackBlock = (
+                    <span className="stack">
+                      {project.stack.map((tool) => {
+                        const label =
+                          typeof tool === "string" ? tool : tool.label;
+                        const struck =
+                          typeof tool === "object" && Boolean(tool.struck);
+                        return (
+                          <span
+                            key={label}
+                            className={
+                              struck
+                                ? "stack-badge stack-badge-struck"
+                                : "stack-badge"
+                            }
+                          >
+                            {label}
+                          </span>
+                        );
+                      })}
+                    </span>
+                  );
+
+                  if (project.collapseTechnicalDetails) {
+                    return (
+                      <>
+                        <details className="tech-details">
+                          <summary className="tech-details-summary">
+                            Expand Technical Implementation & Methodology
+                          </summary>
+                          <div className="tech-details-body">
+                            {storyBlock}
+                            {architectureBlock}
+                            {dataPreviewsBlock}
+                          </div>
+                        </details>
+                        {githubLink && (
+                          <>
+                            <br />
+                            {githubLink}
+                          </>
+                        )}
+                        <br />
+                        <br />
+                        {stackBlock}
+                        <br />
+                        <br />
+                      </>
+                    );
+                  }
+
+                  return (
+                    <>
+                      {storyBlock}
+                      {architectureBlock}
+                      {dataPreviewsBlock}
+                      <br />
+                      {stackBlock}
+                      {githubLink && (
+                        <>
+                          <br />
+                          <br />
+                          {githubLink}
+                        </>
+                      )}
+                      <br />
+                      <br />
+                    </>
+                  );
+                })()}
               </td>
             </tr>
           ))}
